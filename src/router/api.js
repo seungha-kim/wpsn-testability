@@ -5,11 +5,25 @@ const validator = require('validator')
 const query = require('../query')
 const error = require('../error')
 
+/**
+ * @apiDefine Subscription
+ * @apiSuccess {Number} id 식별자
+ * @apiSuccess {String} email 이메일
+ * @apiSuccess {String} created_at 생성 일시
+ */
+
 module.exports = ({postMessage}) => {
   const router = express.Router()
 
   router.use(bodyParser.json())
-
+  /**
+   * @api {post} /api/subscription
+   * @apiName CreateSubscription
+   * @apiGroup Subscription
+   *
+   * @apiParam {String} email 이메일 주소
+   * @apiUse Subscription
+   */
   router.post('/subscription', (req, res, next) => {
     const email = req.body.email
     if (!email) {
@@ -27,6 +41,16 @@ module.exports = ({postMessage}) => {
         })
         .catch(next)
     }
+  })
+
+  /**
+   * @api {get} /api/subscription/:id
+   * @apiName GetSubscription
+   * @apiGroup Subscription
+   * @apiUse Subscription
+   */
+  router.get('/subscription/:id', (req, res) => {
+    res.send({haha: 1})
   })
 
   router.use((req, res, next) => {

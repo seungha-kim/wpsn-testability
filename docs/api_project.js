@@ -1,0 +1,1 @@
+define({  "title": "testability api doc",  "name": "wpsn-testability",  "version": "1.0.0",  "description": "",  "sampleUrl": false,  "defaultVersion": "0.0.0",  "apidoc": "0.3.0",  "generator": {    "name": "apidoc",    "time": "2017-09-27T11:46:23.316Z",    "url": "http://apidocjs.com",    "version": "0.17.6"  }});
