@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const validator = require('validator')
+const bugsnag = require('bugsnag')
 
 const query = require('../query')
 const error = require('../error')
@@ -56,6 +57,7 @@ module.exports = ({postMessage}) => {
   router.use((req, res, next) => {
     next(new error.NotFoundError('경로를 찾을 수 없습니다.'))
   })
+  router.use(bugsnag.errorHandler)
   router.use((err, req, res, next) => {
     if (
       err instanceof error.InsufficientDataError
