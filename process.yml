@@ -1,0 +1,5 @@
+apps:
+  - script: index.js
+    name: subscription
+    env_production:
+      NODE_ENV: production
